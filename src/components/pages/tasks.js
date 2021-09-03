@@ -9,6 +9,16 @@ import './tasks.sass';
 class Tasks extends React.Component {
     componentDidMount() {
         this.props.loadTasks();
+        
+        window.addEventListener('storage', function(e) {  
+            loadTasks();
+        });
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('storage', function(e) {  
+            loadTasks();
+        });
     }
 
     state = {
@@ -31,10 +41,6 @@ class Tasks extends React.Component {
         });
         const doneTasks = tasks.filter((task) => {
             return (task.status === "DONE")
-        });
-
-        window.addEventListener('storage', function(e) {  
-            loadTasks();
         });
            
         const modal = this.state.isOpen ? <Modal/> : null;

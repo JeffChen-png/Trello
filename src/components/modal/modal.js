@@ -63,7 +63,7 @@ class Modal extends React.Component {
                         onChange={this.onValueChange}
                         value={this.state.description}
                     />
-                    <button>Добавить</button>
+                    <button className="modal__btn">Добавить</button>
                 </form>
             </section>
 
